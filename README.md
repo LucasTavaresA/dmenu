@@ -1,8 +1,7 @@
 # Minha configuração do dmenu
 
-**Não é possível fazer patch direto desta build com o patch xyw**
-
-Não é possível passar os argumentos das funções sem as refazer do zero
+**Não é possível fazer patch facilmente desta build com o patch xyw, 
+pois não é possível passar os argumentos das funções sem as refazer do zero**
 
 ### Patches adicionados
 
