@@ -17,8 +17,8 @@ static const char *colors[SchemeLast][2] = {
 	[SchemeOut] = { "#000000", "#FFFFFF" },
 };
 /* -l and -g options; controls number of lines and columns in grid if > 0 */
-static unsigned int lines      = 25;
-static unsigned int columns    = 6;
+static unsigned int lines      = 35;
+static unsigned int columns    = 5;
 
 /*
  * Characters not considered part of a word while deleting words
