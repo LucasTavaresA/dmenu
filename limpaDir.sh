@@ -11,8 +11,6 @@ fi
 
 rm -rf *.o
 rm -rf *.orig
-rm -rf *.rej
 rm -rf config.h
 sudo rm -rf dmenu
 sudo rm -rf stest
-rm -rf *.diff
