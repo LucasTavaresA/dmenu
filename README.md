@@ -1,13 +1,11 @@
 # Minha configuração do dmenu
 
 **Não é possível fazer patch facilmente desta build com o patch xyw,
-pois não é possível passar os argumentos das funções sem as refazer do zero**
+pois não é possível passar os argumentos das funções sem as refazer**
 
 **Transparencia não inclusa (é por parte do compositor picom)**
 
 ### Patches adicionados
-
-- 1px de Bordas (border)
 
 - Procura por partes de palavras (fuzzymatch)
 
