@@ -1,6 +1,6 @@
 # Minha build do dmenu
 
-**Transparencia não inclusa (é por parte do compositor picom)**
+**Menu personalizado usando o [tmenu](https://github.com/Calebe94/tinytools/tree/master/tmenu)**
 
 ![screenshot](./screenshot.png)
 
