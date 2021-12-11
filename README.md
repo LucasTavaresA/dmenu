@@ -23,3 +23,5 @@
 - Procura ignora letra maiusculas se não especificado ([case insensitive](https://tools.suckless.org/dmenu/patches/case-insensitive/))
 
 - Centraliza janelas quando especificado ([center](https://tools.suckless.org/dmenu/patches/center/))
+
+- Transparencia ([alpha](https://tools.suckless.org/dmenu/patches/alpha/))
