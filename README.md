@@ -2,6 +2,8 @@
 
 **Menu personalizado usando o [tmenu](https://github.com/Calebe94/tinytools/tree/master/tmenu)**
 
+**Meus [scripts e menus](https://github.com/LucasTavaresA/dotfiles/tree/main/extras) custom**
+
 ![screenshot](./screenshot.png)
 
 ## Patches
