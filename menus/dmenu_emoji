@@ -10,4 +10,5 @@ if [ -n "$1" ]; then
 else
 	printf "$chosen" | xclip -selection clipboard
 	notify-send "'$chosen' copiado." &
+    xdotool type --window "$window_id" "$chosen"
 fi
