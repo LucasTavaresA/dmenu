@@ -10,6 +10,7 @@ static int fuzzy = 1;                      /* -F  option; if 0, dmenu doesn't us
 static const char *fonts[] = {
     "monospace:size=12",
     "SauceCodePro Nerd Font Mono:weight=bold:size=20:antialias=true:hinting=true",
+    "JoyPixels:pixelsize=16:antialias=true:autohint=true"
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
