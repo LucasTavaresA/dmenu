@@ -20,4 +20,6 @@
 
 - Menu de programas **dmenu_programas**
 
-- Menu opções de **energia dmenu_sys**
+- Menu opções de energia **dmenu_sys**
+
+- Monta e desmonta drives e isos **dmenu_mont
