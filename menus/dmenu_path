@@ -2,8 +2,6 @@
 
 cache="$HOME/dmenu/menus/listas/programas"
 
-[ ! -e "$cachedir" ] && mkdir -p "$cachedir"
-
 IFS=:
 if stest -dqr -n "$cache" $PATH; then
 	stest -flx $PATH | sort -u | tee "$cache"
