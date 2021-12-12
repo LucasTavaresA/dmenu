@@ -3,14 +3,15 @@
 
 read -p "deletar arquivos inúteis (apos ter instalado os patches com sucesso) [y/N]? " -n 1 -r
 echo    
-if [[ ! $REPLY =~ ^[Yy]$ ]]
+if [[ ! $REPLY =~ ^[Nn]$ ]]
 then
-    [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
+    echo deletados arquivos inuteis
+    rm -rf *.o
+    rm -rf *.orig
+    rm -rf config.h
+    sudo rm -rf dmenu
+    sudo rm -rf stest
 fi
 
 
-rm -rf *.o
-rm -rf *.orig
-rm -rf config.h
-sudo rm -rf dmenu
-sudo rm -rf stest
+
