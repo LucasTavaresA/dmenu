@@ -1,0 +1,12 @@
+#!/bin/sh
+
+case "$(printf " Programas\\nﱮ Ranger\\n Favoritos\\n Clipboard\\n💀 Kill\\n Printscreen\\n😂 Emojis\\n襤 Energia" | dmenu -l 35 -c -z 300)" in
+	" Programas") dmenu_programas ;;
+	"ﱮ Ranger") st ranger ;;
+    " Favoritos") dmenu_favoritos ;;
+    " Clipboard") dmenu_clip ;;
+	"💀 Kill") dmenu_kill ;;
+	" Printscreen") dmenu_print ;;
+	"😂 Emojis") dmenu_emoji ;;
+	"襤 Energia") dmenu_sys ;;
+esac
