@@ -25,3 +25,6 @@
 - Centraliza janelas quando especificado ([center](https://tools.suckless.org/dmenu/patches/center/))
 
 - Transparencia ([alpha](https://tools.suckless.org/dmenu/patches/alpha/))
+
+- Altura das linhas controlavel ([line height](https://tools.suckless.org/dmenu/patches/line-height/
+))
