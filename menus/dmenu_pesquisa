@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Da output em caso de erro
+set -euo pipefail
+
+declare -A pesquisa
+
+# pesquisa[engine]="https://www.google.com/search?q="
+# Ferramentas de pesquisa
+pesquisa[youtube]="https://www.youtube.com/results?search_query="
+pesquisa[google]="https://www.google.com/search?q="
+pesquisa[reddit]="https://www.reddit.com/search/?q="
+pesquisa[archwiki]="https://wiki.archlinux.org/index.php?search="
+pesquisa[github]="https://github.com/search?q="
+pesquisa[gitlab]="https://gitlab.com/search?search="
+pesquisa[googleOpenSource]="https://opensource.google/projects/search?q="
+pesquisa[sourceforge]="https://sourceforge.net/directory/?q="
+pesquisa[stackoverflow]="https://stackoverflow.com/search?q="
+
+main() {
+  engine=$(printf '%s\n' "${!pesquisa[@]}" | dmenu -l 35 -c -p 'Procurar com:' "$@") || exit 1
+  url="${pesquisa["${engine}"]}"
+  query=$(echo "$engine" | dmenu -z 1300 -l 35 -c -p 'Pesquisar por:')
+  query="$(echo "${query}" | jq -s -R -r @uri)"
+  firefox "${url}${query}"
+}
+
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"
