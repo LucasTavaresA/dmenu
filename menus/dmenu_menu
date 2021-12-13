@@ -1,13 +1,14 @@
 #!/bin/sh
 
-case "$(printf " Programas\\n Firefox\\nﱮ Ranger\\n Clipboard\\n💀 Kill\\n Printscreen\\n😂 Emojis\\n﫭 Desmontar/montar\\n襤 Energia" | dmenu -l 35 -c -z 300)" in
+case "$(printf " Programas\\n Favoritos\\nﱮ Ranger\\n💀 Kill\\n Clipboard\\n Printscreen\\n😂 Emojis\\n﫭 Desmontar/montar\\n Maquinas virtuais\\n襤 Energia" | dmenu -l 35 -c -z 300)" in
     " Programas") dmenu_programas ;;
-    " Firefox") dmenu_favoritos ;;
+    " Favoritos") dmenu_favoritos ;;
     "ﱮ Ranger") st ranger ;;
-    " Clipboard") dmenu_clip ;;
     "💀 Kill") dmenu_kill ;;
+    " Clipboard") dmenu_clip ;;
     " Printscreen") dmenu_print ;;
     "😂 Emojis") dmenu_emoji ;;
     "﫭 Desmontar/montar") dmenu_mont ;;
+    " Maquinas virtuais") dmenu_virtualbox ;;
     "襤 Energia") dmenu_sys ;;
 esac

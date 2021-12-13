@@ -1,0 +1,12 @@
+#!/bin/sh
+
+select=$(VBoxManage list vms \
+    | cut -d '"' -f2 \
+    | dmenu -l 35 -c -p "vm" \
+)
+
+[ -n "$select" ] \
+    && notify-send \
+        "virtualbox" \
+        "starting $select" \
+    && VBoxManage startvm "$select" >/dev/null 2>&1
