@@ -1,9 +1,9 @@
 #!/bin/sh
 
-case "$(printf " Programas\\n Pesquisar\\n Favoritos\\nﱮ Ranger\\n💀 Kill\\n Clipboard\\n Printscreen\\n😂 Emojis\\n﫭 Desmontar/montar\\n Maquinas virtuais\\n襤 Energia" | dmenu -l 35 -c -z 300)" in
-    " Programas") dmenu_programas ;;
+case "$(printf " Pesquisar\\n Favoritos\\n Programas\\nﱮ Ranger\\n💀 Kill\\n Clipboard\\n Printscreen\\n😂 Emojis\\n﫭 Desmontar/montar\\n Maquinas virtuais\\n襤 Energia" | dmenu -l 35 -c -z 300)" in
     " Pesquisar") dmenu_pesquisa ;;
     " Favoritos") dmenu_favoritos ;;
+    " Programas") dmenu_programas ;;
     "ﱮ Ranger") st ranger ;;
     "💀 Kill") dmenu_kill ;;
     " Clipboard") dmenu_clip ;;

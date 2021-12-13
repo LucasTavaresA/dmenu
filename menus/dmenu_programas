@@ -1,15 +1,16 @@
 #!/bin/sh
 
-case "$(printf "Programas\\nSudo\\nGeany\\nGimp\\nCalculadora\\nTelegram\\nFluxgui\\nMpv\\nTransmission\\nCode\\nDiscord" | dmenu -l 35 -c -p "Abrir")" in
-	"Programas") dmenu_run ;;
-	"Sudo") dmenu_sudo ;;
-	"Geany") geany ;;
-	"Gimp") gimp ;;
-	"Calculadora") galculator ;;
-	"Telegram") telegram-desktop ;;
-	"Fluxgui") fluxgui ;;
-	"Mpv") mpv ;;
-	"Transmission") transmission-gtk ;;
-	"Code") code ;;
-	"Discord") discord ;;
+case "$(printf " Voltar\\n Programas\\n Sudo\\n🫖 Geany\\n Gimp\\n Calculadora\\n Telegram\\n Fluxgui\\n Mpv\\n Transmission\\n Code\\n Discord" | dmenu -l 35 -c -p "Abrir")" in
+    " Voltar") dmenu_menu ;;
+    " Programas") dmenu_run ;;
+	" Sudo") dmenu_sudo ;;
+	"🫖 Geany") geany ;;
+	" Gimp") gimp ;;
+	" Calculadora") galculator ;;
+	" Telegram") telegram-desktop ;;
+	" Fluxgui") fluxgui ;;
+	" Mpv") mpv ;;
+	" Transmission") transmission-gtk ;;
+	" Code") code ;;
+	" Discord") discord ;;
 esac

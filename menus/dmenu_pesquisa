@@ -7,18 +7,20 @@ declare -A pesquisa
 
 # pesquisa[engine]="https://www.google.com/search?q="
 # Ferramentas de pesquisa
-pesquisa[youtube]="https://www.youtube.com/results?search_query="
-pesquisa[google]="https://www.google.com/search?q="
-pesquisa[reddit]="https://www.reddit.com/search/?q="
-pesquisa[archwiki]="https://wiki.archlinux.org/index.php?search="
-pesquisa[github]="https://github.com/search?q="
-pesquisa[gitlab]="https://gitlab.com/search?search="
-pesquisa[googleOpenSource]="https://opensource.google/projects/search?q="
-pesquisa[sourceforge]="https://sourceforge.net/directory/?q="
-pesquisa[stackoverflow]="https://stackoverflow.com/search?q="
+pesquisa[01  Google]="https://www.google.com/search?q="
+pesquisa[02  Youtube]="https://www.youtube.com/results?search_query="
+pesquisa[03  Github]="https://github.com/search?q="
+pesquisa[04  Translate]="https://translate.google.com/?sl=auto&tl=en&text="
+pesquisa[05  Soundcloud]="https://soundcloud.com/search?q="
+pesquisa[06  ArchWiki]="https://wiki.archlinux.org/index.php?search="
+pesquisa[07  StackExchange]="https://stackexchange.com/search?q="
+pesquisa[08 שׂ Sourceforge]="https://sourceforge.net/directory/?q="
+pesquisa[09  Gitlab]="https://gitlab.com/search?search="
+pesquisa[10 﫴 Maps]="https://www.google.com.br/maps/search/"
+pesquisa[11 念 GreasyFork]="https://greasyfork.org/en/scripts?q="
 
 main() {
-  engine=$(printf '%s\n' "${!pesquisa[@]}" | dmenu -l 35 -c -p 'Procurar com:' "$@") || exit 1
+  engine=$(printf '%s\n' "${!pesquisa[@]}" | sort | dmenu -l 35 -c -p 'Pesquisar com:' "$@") || exit 1
   url="${pesquisa["${engine}"]}"
   query=$(echo "$engine" | dmenu -z 1300 -l 35 -c -p 'Pesquisar por:')
   query="$(echo "${query}" | jq -s -R -r @uri)"
