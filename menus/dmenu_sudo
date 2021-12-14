@@ -1,7 +1,6 @@
 #!/bin/sh
 
-case "$(printf " Voltar\\nﱮ Ranger\\n🫖 Geany\\n💀 Kill" | dmenu -l 35 -h 20 -c -cw 10 -p "Sudo")" in
-    " Voltar") dmenu_programas ;;
+case "$(printf "ﱮ Ranger\\n🫖 Geany\\n💀 Kill" | dmenu -l 35 -h 20 -c -cw 10 -p "Sudo")" in
     "ﱮ Ranger") st -e sudo ranger ;;
 	"🫖 Geany") st -e sudo geany ;;
 	"💀 Kill") st -e sudo killmenu ;;
