@@ -1,8 +1,6 @@
 #!/bin/sh
 
-Tocando=$(deadbeef --nowplaying-tf '%filename%' | cut -c -60)
-
-case "$(printf "懶\\n玲\\n怜\\n" | dmenu -l 35 -x 0 -y 300 -z 660 -p "$Tocando")" in
+case "$(printf "懶\\n玲\\n怜\\n" | dmenu -c -cw 280)" in
     "懶") deadbeef --play-pause ;;
     "玲") deadbeef --prev ;;
     "怜") deadbeef --next ;;

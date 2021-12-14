@@ -12,7 +12,9 @@
 
 - Partes sendo procuradas ficam em amarelo ([fuzzyhighlight](https://tools.suckless.org/dmenu/patches/fuzzyhighlight/))
 
-- Posicionamento e tamanho controlaveis ([xyw](https://tools.suckless.org/dmenu/patches/xyw/))
+- colunas ([grid](https://tools.suckless.org/dmenu/patches/grid/))
+
+- navegação pelas colunas ([gridnav](https://tools.suckless.org/dmenu/patches/gridnav/))
 
 - Borda ([border](https://tools.suckless.org/dmenu/patches/border/))
 

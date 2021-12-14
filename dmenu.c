@@ -32,8 +32,7 @@
 #define OPAQUE                0xffU
 
 /* enums */
-enum { SchemeNorm, SchemeSel, SchemeNormHighlight, SchemeSelHighlight, SchemeBorder, SchemeOut, SchemeLast }; /* color schemes */
-
+enum { SchemeNorm, SchemeSel, SchemeBorder, SchemeNormHighlight, SchemeSelHighlight, SchemeOut, SchemeLast }; /* color schemes */
 
 struct item {
 	char *text;
@@ -46,8 +45,6 @@ static char numbers[NUMBERSBUFSIZE] = "";
 static char text[BUFSIZ] = "";
 static char *embed;
 static int bh, mw, mh;
-static int dmx = 0; /* put dmenu at this x offset */
-static int dmy = 0; /* put dmenu at this y offset (measured from the bottom if topbar is 0) */
 static int inputw = 0, promptw;
 static int lrpad; /* sum of left and right padding */
 static size_t cursor;
@@ -95,7 +92,7 @@ calcoffsets(void)
 	int i, n;
 
 	if (lines > 0)
-		n = lines * bh;
+		n = lines * columns * bh;
 	else
 		n = mw - (promptw + inputw + TEXTW("<") + TEXTW(">"));
 	/* calculate which items will begin the next page and previous page */
@@ -237,9 +234,15 @@ drawmenu(void)
 
 	recalculatenumbers();
 	if (lines > 0) {
-		/* draw vertical list */
-		for (item = curr; item != next; item = item->right)
-			drawitem(item, x, y += bh, mw - x);
+		/* draw grid */
+		int i = 0;
+		for (item = curr; item != next; item = item->right, i++)
+			drawitem(
+				item,
+				x + ((i / lines) *  ((mw - x) / columns)),
+				y + (((i % lines) + 1) * bh),
+				(mw - x) / columns
+			);
 	} else if (matches) {
 		/* draw horizontal list */
 		x += inputw;
@@ -250,11 +253,11 @@ drawmenu(void)
 		}
 		x += w;
 		for (item = curr; item != next; item = item->right)
-			x = drawitem(item, x, 0, MIN(TEXTW(item->text), mw - x - TEXTW(">") - TEXTW(numbers)));
+            x = drawitem(item, x, 0, MIN(TEXTW(item->text), mw - x - TEXTW(">") - TEXTW(numbers)));
 		if (next) {
 			w = TEXTW(">");
 			drw_setscheme(drw, scheme[SchemeNorm]);
-			drw_text(drw, mw - w - TEXTW(numbers), 0, w, bh, lrpad / 2, ">", 0);
+            drw_text(drw, mw - w - TEXTW(numbers), 0, w, bh, lrpad / 2, ">", 0);
 		}
 	}
 	drw_setscheme(drw, scheme[SchemeNorm]);
@@ -483,6 +486,8 @@ keypress(XKeyEvent *ev)
 	int len;
 	KeySym ksym;
 	Status status;
+	int i, offscreen = 0;
+	struct item *tmpsel;
 
 	len = XmbLookupString(xic, ev, buf, sizeof buf, &ksym, &status);
 	switch (status) {
@@ -615,6 +620,27 @@ insert:
 		break;
 	case XK_Left:
 	case XK_KP_Left:
+		if (columns > 1) {
+			if (!sel)
+				return;
+			tmpsel = sel;
+			for (i = 0; i < lines; i++) {
+				if (!tmpsel->left || tmpsel->left->right != tmpsel) {
+					if (offscreen)
+						break;
+					return;
+				}
+				if (tmpsel == curr)
+					offscreen = 1;
+				tmpsel = tmpsel->left;
+			}
+			sel = tmpsel;
+			if (offscreen) {
+				curr = prev;
+				calcoffsets();
+			}
+			break;
+		}
 		if (cursor > 0 && (!sel || !sel->left || lines > 0)) {
 			cursor = nextrune(-1);
 			break;
@@ -655,7 +681,28 @@ insert:
 		break;
 	case XK_Right:
 	case XK_KP_Right:
-		if (text[cursor] != '\0') {
+		if (columns > 1) {
+			if (!sel)
+				return;
+			tmpsel = sel;
+			for (i = 0; i < lines; i++) {
+				if (!tmpsel->right ||  tmpsel->right->left != tmpsel) {
+					if (offscreen)
+						break;
+					return;
+				}
+				tmpsel = tmpsel->right;
+				if (tmpsel == next)
+					offscreen = 1;
+			}
+			sel = tmpsel;
+			if (offscreen) {
+				curr = next;
+				calcoffsets();
+			}
+			break;
+		}
+        if (text[cursor] != '\0') {
 			cursor = nextrune(+1);
 			break;
 		}
@@ -797,7 +844,7 @@ setup(void)
 	mh = (lines + 1) * bh;
 	promptw = (prompt && *prompt) ? TEXTW(prompt) - lrpad / 4 : 0;
 #ifdef XINERAMA
-    i = 0;
+	i = 0;
 	if (parentwin == root && (info = XineramaQueryScreens(dpy, &n))) {
 		XGetInputFocus(dpy, &w, &di);
 		if (mon >= 0 && mon < n)
@@ -821,33 +868,33 @@ setup(void)
 			for (i = 0; i < n; i++)
 				if (INTERSECT(x, y, 1, 1, info[i]))
 					break;
-
-		if (centered) {
+        if (centered) {
 			mw = MIN(MAX(max_textw() + promptw, dmw), info[i].width);
 			x = info[i].x_org + ((info[i].width  - mw) / 2);
 			y = info[i].y_org + ((info[i].height - mh) / 2);
 		} else {
-			x = info[i].x_org + dmx;
-			y = info[i].y_org + (topbar ? 0 : info[i].height - mh - dmy);
-			mw = (dmw>0 ? dmw : info[i].width);
+			x = info[i].x_org;
+			y = info[i].y_org + (topbar ? 0 : info[i].height - mh);
+			mw = info[i].width;
 		}
 
-        XFree(info);
+		XFree(info);
 	} else
 #endif
 	{
 		if (!XGetWindowAttributes(dpy, parentwin, &wa))
 			die("could not get embedding window attributes: 0x%lx",
 			    parentwin);
+
 		if (centered) {
 			mw = MIN(MAX(max_textw() + promptw, dmw), wa.width);
 			x = (wa.width  - mw) / 2;
 			y = (wa.height - mh) / 2;
 		} else {
-		    x = dmx;
-		    y = topbar ? dmy : wa.height - mh - dmy;
-		    mw = (dmw>0 ? dmw : wa.width);
-        }
+			x = 0;
+			y = topbar ? 0 : wa.height - mh;
+			mw = wa.width;
+		}
 	}
 	inputw = MIN(inputw, mw/3);
 	match();
@@ -862,7 +909,7 @@ setup(void)
 	                    depth, CopyFromParent, visual,
 	                    CWOverrideRedirect | CWBackPixel | CWBorderPixel | CWColormap | CWEventMask, &swa);
 	XSetWindowBorder(dpy, win, scheme[SchemeBorder][ColBg].pixel);
-	XSetClassHint(dpy, win, &ch);
+    XSetClassHint(dpy, win, &ch);
 
 
 	/* input methods */
@@ -889,11 +936,10 @@ setup(void)
 static void
 usage(void)
 {
-    fputs("usage: dmenu [-bfiv] [-l lines] [-h height] [-p prompt] [-fn font] [-m monitor]\n"
-	      "             [-x xoffset] [-y yoffset] [-z width]\n"
+	fputs("usage: dmenu [-bfsv] [-l lines] [-h height] [-c centered] [-cw centered width] [-p prompt] [-fn font] [-m monitor]\n"
 	      "             [-nb color] [-nf color] [-sb color] [-sf color]\n"
 	      "             [-nhb color] [-nhf color] [-shb color] [-shf color] [-w windowid]\n", stderr);
-    exit(1);
+	exit(1);
 }
 
 int
@@ -911,7 +957,7 @@ main(int argc, char *argv[])
 			topbar = 0;
 		else if (!strcmp(argv[i], "-f"))   /* grabs keyboard before reading stdin */
 			fast = 1;
-else if (!strcmp(argv[i], "-F"))   /* grabs keyboard before reading stdin */
+        else if (!strcmp(argv[i], "-F"))   /* grabs keyboard before reading stdin */
 			fuzzy = 0;
         else if (!strcmp(argv[i], "-c"))   /* centers dmenu on screen */
 			centered = 1;
@@ -921,19 +967,19 @@ else if (!strcmp(argv[i], "-F"))   /* grabs keyboard before reading stdin */
 		} else if (i + 1 == argc)
 			usage();
 		/* these options take one argument */
-		else if (!strcmp(argv[i], "-l"))   /* number of lines in vertical list */
+		else if (!strcmp(argv[i], "-g")) {   /* number of columns in grid */
+			columns = atoi(argv[++i]);
+			if (lines == 0) lines = 1;
+		} else if (!strcmp(argv[i], "-l")) { /* number of lines in grid */
 			lines = atoi(argv[++i]);
-        else if (!strcmp(argv[i], "-h")) { /* minimum height of one menu line */
-            lineheight = atoi(argv[++i]);
-            lineheight = MAX(lineheight, min_lineheight);
-        }
-		else if (!strcmp(argv[i], "-x"))   /* window x offset */
-			dmx = atoi(argv[++i]);
-		else if (!strcmp(argv[i], "-y"))   /* window y offset (from bottom up if -b) */
-			dmy = atoi(argv[++i]);
-		else if (!strcmp(argv[i], "-z"))   /* make dmenu this wide */
+        } else if (!strcmp(argv[i], "-cw")) { /* minimum width of centered menu */
 			dmw = atoi(argv[++i]);
-		else if (!strcmp(argv[i], "-m"))
+			dmw = MAX(dmw, dmw);
+        } else if (!strcmp(argv[i], "-h")) { /* minimum height of one menu line */
+			lineheight = atoi(argv[++i]);
+			lineheight = MAX(lineheight, min_lineheight);
+			if (columns == 0) columns = 1;
+        } else if (!strcmp(argv[i], "-m"))
 			mon = atoi(argv[++i]);
 		else if (!strcmp(argv[i], "-p"))   /* adds prompt to left of input field */
 			prompt = argv[++i];

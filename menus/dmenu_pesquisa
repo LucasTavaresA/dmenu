@@ -20,9 +20,9 @@ pesquisa[10 﫴 Maps]="https://www.google.com.br/maps/search/"
 pesquisa[11 念 GreasyFork]="https://greasyfork.org/en/scripts?q="
 
 main() {
-  engine=$(printf '%s\n' "${!pesquisa[@]}" | sort | dmenu -l 35 -c -p 'Pesquisar com:' "$@") || exit 1
+  engine=$(printf '%s\n' "${!pesquisa[@]}" | sort | dmenu -l 35 -h 20 -p 'Pesquisar com:' "$@") || exit 1
   url="${pesquisa["${engine}"]}"
-  query=$(echo "$engine" | dmenu -z 1300 -l 35 -c -p 'Pesquisar por:')
+  query=$(echo "$engine" | dmenu -l 11 -p "$engine")
   query="$(echo "${query}" | jq -s -R -r @uri)"
   firefox "${url}${query}"
 }

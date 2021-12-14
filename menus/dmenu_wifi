@@ -3,8 +3,8 @@
 set -euo pipefail
 
 main() {
-  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -c -p "Selecione Wifi  :" | cut -d' ' -f1)
-  pass=$(echo "" | dmenu -c -p "Digite uma senha  :")
+  bssid=$(nmcli device wifi list | sed -n '1!p' | cut -b 9- | dmenu -c -cw 500 -p "Selecione Wifi  :" | cut -d' ' -f1)
+  pass=$(echo "" | dmenu -p "Digite uma senha  :")
   # shellcheck disable=SC2015
   [ -n "$pass" ] && nmcli device wifi connect "$bssid" password "$pass" || nmcli device wifi connect "$bssid"
   sleep 10

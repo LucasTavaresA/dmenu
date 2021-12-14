@@ -1,6 +1,6 @@
 #!/bin/sh
 
-case "$(printf " Voltar\\n Programas\\n Sudo\\n🫖 Geany\\n Gimp\\n Calculadora\\n Telegram\\n Fluxgui\\n Mpv\\n Transmission\\n Code\\n Discord" | dmenu -l 35 -c -p "Abrir")" in
+case "$(printf " Voltar\\n Programas\\n Sudo\\n🫖 Geany\\n Gimp\\n Calculadora\\n Telegram\\n Fluxgui\\n Mpv\\n Transmission\\n Code\\n Discord" | dmenu -l 35 -h 20 -c -cw 200 )" in
     " Voltar") dmenu_menu ;;
     " Programas") dmenu_run ;;
 	" Sudo") dmenu_sudo ;;

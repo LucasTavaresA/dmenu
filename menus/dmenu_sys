@@ -1,6 +1,6 @@
 #!/bin/sh
 
-case "$(printf "ﰇ Reiniciar\\n襤 Desligar" | dmenu -l 35 -c -p "Opções")" in
+case "$(printf "ﰇ Reiniciar\\n襤 Desligar" | dmenu -l 35 -h 20 -c -p "Opções")" in
 	"ﰇ Reiniciar") systemctl reboot ;;
 	"襤 Desligar") systemctl poweroff ;;
 esac

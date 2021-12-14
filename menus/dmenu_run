@@ -1,2 +1,2 @@
 #!/bin/sh
-dmenu_path | dmenu -l 35 -p Abrir -z 500 -c "$@" | ${SHELL:-"/bin/sh"} &
+dmenu_path | dmenu -l 35 -g 4 "$@" | ${SHELL:-"/bin/sh"} &
