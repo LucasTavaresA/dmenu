@@ -3,7 +3,7 @@
 tocando=$(deadbeef --nowplaying-tf '%filename%' | cut -c -60)
 volume=$(awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master))
 
-case "$(printf "懶\\n玲\\n怜\\n\\n墳 $volume%" | dmenu -y 350 -z 1358 -p "$tocando")" in
+case "$(printf "懶\\n玲\\n怜\\n\\n墳 $volume%" | dmenu -c -cw 1357 -p "$tocando")" in
     "懶") deadbeef --play-pause ;;
     "玲") deadbeef --prev ;;
     "怜") deadbeef --next ;;

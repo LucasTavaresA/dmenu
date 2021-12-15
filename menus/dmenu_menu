@@ -6,7 +6,7 @@ case "$(printf " Fechar\\n Pesquisar\\n Favoritos\\n Programas\\n
     " Favoritos") dmenu_favoritos ;;
     " Programas") dmenu_programas ;;
     " Notas") dmenu_notas ;;
-    "ﱮ Ranger") st ranger ;;
+    "ﱮ Ranger") dmenu_ranger ;;
     "💀 Kill") dmenu_kill ;;
     " Clipboard") dmenu_clip ;;
     " Printscreen") dmenu_print ;;
