@@ -1,6 +1,6 @@
 #!/bin/sh
 
-case "$(printf " Fechar\\n Pesquisar\\n Favoritos\\n Programas\\n Notas\\nﱮ Ranger\\n💀 Kill\\n Clipboard\\n Printscreen\\n😂 Emojis\\n﫭 Desmontar/montar\\n Maquinas virtuais\\n襤 Energia" | dmenu -l 35 -h 20 -c)" in
+case "$(printf " Fechar\\n Pesquisar\\n Favoritos\\n Programas\\n Notas\\nﱮ Ranger\\n💀 Kill\\n Clipboard\\n Printscreen\\n😂 Emojis\\n﫭 Desmontar/montar\\n Maquinas virtuais\\n襤 Energia" | dmenu -l 35 -h 20 -c -cw 100)" in
     " Fechar") NULL ;;
     " Pesquisar") dmenu_pesquisa ;;
     " Favoritos") dmenu_favoritos ;;

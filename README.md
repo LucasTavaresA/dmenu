@@ -2,6 +2,8 @@
 
 **Pasta menus contem scripts e menus custom**
 
+**Lembre-se de mudar as flags caso for usar os scripts em uma outra configuração do dmenu**
+
 ![screenshot](./screenshot.png)
 
 ## Patches
@@ -28,3 +30,5 @@
 
 - Altura das linhas controlavel ([line height](https://tools.suckless.org/dmenu/patches/line-height/
 ))
+
+- Posição controlavel ([xyw](https://tools.suckless.org/dmenu/patches/xyw/))

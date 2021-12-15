@@ -2,7 +2,7 @@
 
 select=$(VBoxManage list vms \
     | cut -d '"' -f2 \
-    | dmenu -l 35 -h 20 -c -p "vm" \
+    | dmenu -l 35 -h 20 -c -cw 100 -p "vm" \
 )
 
 [ -n "$select" ] \
