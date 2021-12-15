@@ -1,0 +1,10 @@
+#!/bin/sh
+
+dmenu_notas=/home/documentos/$(ls -X -r /home/documentos/ | dmenu -l 35 -h 20 -c -cw 10)
+echo "$dmenu_notas"
+[ "$dmenu_notas" = "/home/documentos/" ] && exit
+
+[ "$(echo "${dmenu_notas##*.}")" = "pdf" ] && firefox "$dmenu_notas" && exit
+[ "$(echo "${dmenu_notas##*.}")" = "png" ] && sxiv "$dmenu_notas" && exit
+[ "$(echo "${dmenu_notas##*.}")" = "jpg" ] && sxiv "$dmenu_notas" && exit
+st -e nvim "$dmenu_notas"
