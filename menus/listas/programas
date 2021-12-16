@@ -444,7 +444,6 @@ dmenu_path
 dmenu_pesquisa
 dmenu_print
 dmenu_programas
-dmenu_ranger
 dmenu_run
 dmenu_sudo
 dmenu_sys
@@ -485,7 +484,6 @@ dvcont
 dvipdf
 dwebp
 dwm
-dwmblocks
 dwmc
 dwp
 e2freefrag
@@ -942,7 +940,6 @@ htop
 httpcfg
 hunspell
 hunzip
-hwasan_symbolize
 hwclock
 hwinfo
 hwloc-annotate
@@ -3020,6 +3017,7 @@ xdg-open
 xdotool
 xev
 xflux
+xfontsel
 xfs_admin
 xfs_bmap
 xfs_copy
