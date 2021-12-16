@@ -444,6 +444,7 @@ dmenu_path
 dmenu_pesquisa
 dmenu_print
 dmenu_programas
+dmenu_ranger
 dmenu_run
 dmenu_sudo
 dmenu_sys
@@ -484,6 +485,8 @@ dvcont
 dvipdf
 dwebp
 dwm
+dwmblocks
+dwmc
 dwp
 e2freefrag
 e2fsck
@@ -3015,6 +3018,7 @@ xclip-pastefile
 xdg-dbus-proxy
 xdg-open
 xdotool
+xev
 xflux
 xfs_admin
 xfs_bmap

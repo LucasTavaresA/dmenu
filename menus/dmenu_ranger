@@ -1,8 +1,0 @@
-#!/bin/sh
-
-case "$(printf "ﱮ Ranger\\nﱮ Music\\nﱮ Img Vid\\nﱮ Projetos" | dmenu -l 35 -h 20 -c -cw 10)" in
-    "ﱮ Ranger") st ranger ;;
-	"ﱮ Music") st ranger /home/music ;;
-	"ﱮ Img Vid") st ranger /home/img\ vid ;;
-	"ﱮ Projetos") st ranger /home/projetos ;;
-esac

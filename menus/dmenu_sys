@@ -1,6 +1,10 @@
 #!/bin/sh
 
-case "$(printf "ﰇ Reiniciar\\n襤 Desligar" | dmenu -l 35 -h 20 -c -cw 100 -p "Opções")" in
-	"ﰇ Reiniciar") systemctl reboot ;;
+case "$(printf " Cancelar\\n Bloquear\\n Sair do dwm\\nﰇ Resetar o dwm\\nﰇ Reiniciar\\n襤 Desligar" | dmenu -l 35 -h 20 -c -cw 100 -p "Opções")" in
+    " Cancelar") NULL ;;
+    " Bloquear") slock ;;
+    " Sair do dwm") kill -TERM "$(pgrep -u "$USER" "\bdwm$")" ;;
+    "ﰇ Resetar o dwm") kill -HUP "$(pgrep -u "$USER" "\bdwm$")" ;;
+    "ﰇ Reiniciar") systemctl reboot ;;
 	"襤 Desligar") systemctl poweroff ;;
 esac

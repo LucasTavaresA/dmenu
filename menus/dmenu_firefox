@@ -1,0 +1,6 @@
+#!/bin/sh
+
+case "$(printf " Pesquisar\\n Favoritos" | dmenu -l 35 -h 20 -c -cw 100)" in
+    " Pesquisar") dmenu_pesquisa ;;
+    " Favoritos") dmenu_favoritos ;;
+esac

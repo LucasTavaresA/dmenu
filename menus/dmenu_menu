@@ -1,17 +1,13 @@
 #!/bin/sh
 
-case "$(printf " Fechar\\n Pesquisar\\n Favoritos\\n Programas\\n Notas\\nﱮ Ranger\\n💀 Kill\\n Clipboard\\n Printscreen\\n😂 Emojis\\n﫭 Desmontar/montar\\n Maquinas virtuais\\n襤 Energia" | dmenu -l 35 -h 20 -c -cw 100)" in
-    " Fechar") NULL ;;
-    " Pesquisar") dmenu_pesquisa ;;
-    " Favoritos") dmenu_favoritos ;;
+case "$(printf "ﱮ Ranger\\n Programas\\n Notas\\n Clipboard\\n💀 Kill\\n😂 Emojis\\n Printscreen\\n Maquinas virtuais\\n﫭 Desmontar/montar" | dmenu -l 35 -h 20 -c -cw 100)" in
+    "ﱮ Ranger") st ranger ;;
     " Programas") dmenu_programas ;;
     " Notas") dmenu_notas ;;
-    "ﱮ Ranger") dmenu_ranger ;;
-    "💀 Kill") dmenu_kill ;;
     " Clipboard") dmenu_clip ;;
-    " Printscreen") dmenu_print ;;
+    "💀 Kill") dmenu_kill ;;
     "😂 Emojis") dmenu_emoji ;;
-    "﫭 Desmontar/montar") dmenu_mont ;;
+    " Printscreen") dmenu_print ;;
     " Maquinas virtuais") dmenu_virtualbox ;;
-    "襤 Energia") dmenu_sys ;;
+    "﫭 Desmontar/montar") dmenu_mont ;;
 esac
