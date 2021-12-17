@@ -731,6 +731,12 @@ gimptool
 gimptool-2.0
 gio
 gio-querymodules
+g-ir-annotation-tool
+g-ir-compiler
+g-ir-doc-tool
+g-ir-generate
+g-ir-inspect
+g-ir-scanner
 git
 git-clang-format
 git-cvsserver
@@ -1360,6 +1366,7 @@ makeinfo
 makemhr
 makepkg
 makepkg-template
+mako-render
 man
 mandb
 manette-test
@@ -1367,6 +1374,7 @@ manpath
 man-recode
 manweb
 mapscrn
+markdown_py
 mconfig
 mcookie
 mcs

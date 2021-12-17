@@ -22,4 +22,6 @@
 
 - Menu opções de energia **dmenu_sys**
 
-- Monta e desmonta drives e isos **dmenu_mont
+- Monta e desmonta drives e isos **dmenu_mont**
+
+- Muda de janelas pelo dmenu **dmenu_janelas** necesario patch ([focusonnetactive](https://dwm.suckless.org/patches/focusonnetactive/)) no dwm
