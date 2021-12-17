@@ -33,3 +33,5 @@
 - Posição controlavel ([xyw](https://tools.suckless.org/dmenu/patches/xyw/))
 
 - Linhas aparecem abaixo do prompt ([lines below prompt](https://tools.suckless.org/dmenu/patches/lines-below-prompt/))
+
+- Preseleção de items ([preselect](https://tools.suckless.org/dmenu/patches/preselect/))
