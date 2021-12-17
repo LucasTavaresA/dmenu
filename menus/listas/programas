@@ -441,7 +441,6 @@ dmenu_menu
 dmenu_mont
 dmenu_notas
 dmenu_path
-dmenu_pesquisa
 dmenu_print
 dmenu_programas
 dmenu_run
@@ -2609,6 +2608,7 @@ sudo_sendlog
 sulogin
 sum
 sunicontopnm
+surf
 svcutil
 svgtopam
 SvtAv1DecApp

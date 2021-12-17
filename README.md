@@ -28,7 +28,8 @@
 
 - Transparencia ([alpha](https://tools.suckless.org/dmenu/patches/alpha/))
 
-- Altura das linhas controlavel ([line height](https://tools.suckless.org/dmenu/patches/line-height/
-))
+- Altura das linhas controlavel ([line height](https://tools.suckless.org/dmenu/patches/line-height/))
 
 - Posição controlavel ([xyw](https://tools.suckless.org/dmenu/patches/xyw/))
+
+- Linhas aparecem abaixo do prompt ([lines below prompt](https://tools.suckless.org/dmenu/patches/lines-below-prompt/))
