@@ -436,6 +436,7 @@ dmenu_clip
 dmenu_deadbeef
 dmenu_emoji
 dmenu_favoritos
+dmenu_janelas
 dmenu_kill
 dmenu_menu
 dmenu_mont
@@ -2616,7 +2617,6 @@ sudo_sendlog
 sulogin
 sum
 sunicontopnm
-surf
 svcutil
 svgtopam
 SvtAv1DecApp
@@ -2967,6 +2967,7 @@ wkhtmltopdf
 wks2csv
 wks2raw
 wks2text
+wmctrl
 wmf2eps
 wmf2fig
 wmf2gd

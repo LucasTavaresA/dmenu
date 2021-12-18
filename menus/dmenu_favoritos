@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # config
-bookmarks_file="$HOME/dmenu/menus/listas/favoritos"
+bookmarks_file="$HOME/suckless/dmenu/menus/listas/favoritos"
 search_url="https://www.googile.com/search?q="
 open_in_browser="abre_links.sh"
 

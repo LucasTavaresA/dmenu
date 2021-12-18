@@ -1,9 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
 tocando=$(deadbeef --nowplaying-tf '%filename%')
-volume=$(awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master))
 
-case "$(printf "玲\\n\\n怜\\n\\n墳 $volume%" | dmenu -h 30 -g 5 -y 350 -z 1360 -n 1 -p "$tocando")" in
+case "$(printf "\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n玲\\n\\n怜\\n" | dmenu -h 30 -l 1 -g 40 -y 350 -z 1360 -n 19 -p "$tocando")" in
     "玲") deadbeef --prev ;;
     "") deadbeef --play-pause ;;
     "怜") deadbeef --next ;;

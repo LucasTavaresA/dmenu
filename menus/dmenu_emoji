@@ -1,6 +1,6 @@
 #!/bin/sh
 
-chosen=$(cut -d ';' -f1 $HOME/dmenu/menus/listas/emojis | dmenu -l 35 -h 20 | sed "s/ .*//")
+chosen=$(cut -d ';' -f1 $HOME/suckless/dmenu/menus/listas/emojis | dmenu -l 35 -h 20 | sed "s/ .*//")
 
 # Sai caso nenhum é selecionado.
 [ -z "$chosen" ] && exit
