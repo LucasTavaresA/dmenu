@@ -12,9 +12,9 @@
 
 - Seleciona e copia emojis de uma lista usando dmenu ([dmenu_emoji](https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/dmenuunicode))
 
-- Abre commandos com sudo **dmenu_sudo**
+- Abre comandos com sudo **dmenu_sudo**
 
-- Abre uma lista personalizavel de favoritos **dmenu_favoritos e abre_links.sh**
+- Abre uma lista personalizável de favoritos **dmenu_favoritos e abre_links.sh**
 
 - Menu custom **dmenu_menu**
 
@@ -24,4 +24,4 @@
 
 - Monta e desmonta drives e isos **dmenu_mont**
 
-- Muda de janelas pelo dmenu **dmenu_janelas** necesario patch ([focusonnetactive](https://dwm.suckless.org/patches/focusonnetactive/)) no dwm
+- Muda de janelas pelo dmenu **dmenu_janelas** necessário patch ([focusonnetactive](https://dwm.suckless.org/patches/focusonnetactive/)) no dwm

@@ -22,16 +22,16 @@
 
 - numeração da quantidade achada/total de itens ([numbers](https://tools.suckless.org/dmenu/patches/numbers/))
 
-- Procura ignora letra maiusculas se não especificado ([case insensitive](https://tools.suckless.org/dmenu/patches/case-insensitive/))
+- Procura ignora letra maiúsculas se não especificado ([case insensitive](https://tools.suckless.org/dmenu/patches/case-insensitive/))
 
 - Centraliza janelas quando especificado ([center](https://tools.suckless.org/dmenu/patches/center/))
 
 - Transparencia ([alpha](https://tools.suckless.org/dmenu/patches/alpha/))
 
-- Altura das linhas controlavel ([line height](https://tools.suckless.org/dmenu/patches/line-height/))
+- Altura das linhas controlável ([line height](https://tools.suckless.org/dmenu/patches/line-height/))
 
 - Posição controlavel ([xyw](https://tools.suckless.org/dmenu/patches/xyw/))
 
 - Linhas aparecem abaixo do prompt ([lines below prompt](https://tools.suckless.org/dmenu/patches/lines-below-prompt/))
 
-- Preseleção de items ([preselect](https://tools.suckless.org/dmenu/patches/preselect/))
+- Presseleção de itens ([preselect](https://tools.suckless.org/dmenu/patches/preselect/))
