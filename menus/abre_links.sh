@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # config
-web="$BROWSER"
+web="qutebrowser"
 edit="$TERMINAL -e $EDITOR"
 uri="$1"
 uri_lower="$(printf "%s" "$uri" | tr '[:upper:]' '[:lower:]')"
@@ -11,6 +11,6 @@ open() {
 }
 
 notify-send \
-"Abrindo no firefox" \
+"Abrindo no qutebrowser" \
 "$uri"
 open "$web"

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+case "$(printf " Qutebrowser\\n❕ Importante\\n Pesquisar\\n Favoritos" | dmenu -l 35 -h 20 -c -cw 100)" in
+    " Qutebrowser") qutebrowser ;;
+    "❕ Importante") dmenu_favoritos importante ;;
+    " Pesquisar") dmenu_pesquisa ;;
+    " Favoritos") dmenu_favoritos ;;
+esac
