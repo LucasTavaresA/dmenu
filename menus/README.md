@@ -16,7 +16,7 @@
 
 - Abre uma lista personalizável de favoritos **dmenu_favoritos e abre_links.sh**
 
-- Menu custom **dmenu_menu**
+- Menu customizado **dmenu_menu**
 
 - Menu de programas **dmenu_programas**
 
@@ -24,4 +24,8 @@
 
 - Monta e desmonta drives e isos **dmenu_mont**
 
-- Muda de janelas pelo dmenu **dmenu_janelas** necessário patch ([focusonnetactive](https://dwm.suckless.org/patches/focusonnetactive/)) no dwm
+- Copia comandos anteriores do bash **dmenu_bashhistory**
+
+- Menus e comandos uteis para um navegador **dmenu_navegador** e **dmenu_pesquisa**
+
+- Abre pasta de documentos e cria ou abre um documento **dmenu_notas**
