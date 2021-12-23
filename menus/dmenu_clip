@@ -8,7 +8,7 @@ shopt -s nullglob
 cache_dir=$(clipctl cache-dir)
 cache_file=$cache_dir/line_cache
 
-# Not -h, see #142
+# --help
 if [[ $1 == --help ]]; then
     cat << 'EOF'
 clipmenu is a simple clipboard manager using dmenu and xsel. Launch this
@@ -31,7 +31,6 @@ if ! [[ -f "$cache_file" ]]; then
     exit 2
 fi
 
-# Blacklist of non-dmenu launchers
 launcher_args=(-l "${CM_HISTLENGTH}" -h 20)
 
 list_clips() {

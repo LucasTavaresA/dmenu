@@ -1,7 +1,5 @@
 #!/bin/bash
 
-MENU_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
-
 function join
 {
     local IFS="$1"

@@ -1,9 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
 data=$(date +'%A %d/%m/%Y - %H:%M')
-volume=$(awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master))
 
-case "$(printf "ﱮ Ranger\\n Programas\\n Notas\\n Clipboard\\n💀 Kill\\n😂 Emojis\\n Printscreen\\n Maquinas virtuais\\n﫭 Desmontar/montar" | dmenu -l 35 -h 20 -c -cw 100 -p "$data - 墳 $volume")" in
+case "$(printf "ﱮ Ranger\\n Programas\\n Notas\\n Clipboard\\n💀 Kill\\n😂 Emojis\\n Printscreen\\n Maquinas virtuais\\n﫭 Desmontar/montar" | dmenu -l 35 -h 20 -c -cw 100 -p "$data")" in
     "ﱮ Ranger") st ranger /home ;;
     " Programas") dmenu_programas ;;
     " Notas") dmenu_notas ;;
