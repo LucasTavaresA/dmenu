@@ -1,2 +1,2 @@
 #!/bin/sh
-cat $HOME/.bash_history | dmenu -l 35 -h 20 | xclip -selection clipboard
+tac < "$HISTFILE" | dmenu -l 35 -h 20 | xclip -selection clipboard

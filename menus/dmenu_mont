@@ -12,7 +12,7 @@ desmontar() {
     select=$(grep "/mnt\|$mount_dir/" /proc/self/mounts \
         | cut -d " " -f2 \
         | sort \
-        | dmenu -l 35 -h 20 -c -cw 100 -p "desmontar" \
+        | dmenu -l 35 -h 20 -c -cw 300 -p "desmontar" \
     )
 
     [ -n "$select" ] \
@@ -27,7 +27,7 @@ desmontar() {
 montar_usb() {
     select="$(lsblk -rpo "name,type,size,mountpoint" \
         | awk '{ if ($2=="part"&&$4=="" || $2=="rom"&&$4=="" || $3=="1,4M"&&$4=="") printf "%s (%s)\n",$1,$3}' \
-        | dmenu -l 35 -h 20 -c -cw 100 -p "禍 montar usb" \
+        | dmenu -l 35 -h 20 -c -cw 300 -p "禍 montar usb" \
         | cut -d " " -f1)"
 
     [ -z "$select" ] \
@@ -67,7 +67,7 @@ montar_iso() {
             -iname "*.mdf" -o \
             -iname "*.nrg" \
         | cut -d / -f 5 \
-        | dmenu -l 35 -h 20 -c -cw 100 -p "﫭 montar iso" \
+        | dmenu -l 35 -h 20 -c -cw 300 -p "﫭 montar iso" \
     )
 
     [ -z "$select" ] \
@@ -87,7 +87,7 @@ montar_iso() {
 # montar android
 montar_android() {
     select=$(simple-mtpfs -l 2>/dev/null \
-        | dmenu -l 35 -h 20 -c -cw 100 -p " montar android" \
+        | dmenu -l 35 -h 20 -c -cw 300 -p " montar android" \
         | cut -d ":" -f1 \
     )
 
@@ -100,7 +100,7 @@ montar_android() {
         && mkdir "$mount_point" \
         && simple-mtpfs --device "$select" "$mount_point" \
         && notify-send \
-            " montar android" \
+            " montar android" \
             "$select mountado em $mount_point"
 }
 
@@ -109,8 +109,8 @@ case $(printf "%s\n" \
     "desmontar" \
     "禍 montar usb" \
     "﫭 montar iso" \
-    " montar android" \
-    | dmenu -l 35 -h 20 -c -cw 100 -p "desmontar/montar" \
+    " montar android" \
+    | dmenu -l 35 -h 20 -c -cw 300 \
     ) in
     "desmontar")
         desmontar
@@ -121,7 +121,7 @@ case $(printf "%s\n" \
     "﫭 montar iso")
         montar_iso
         ;;
-    " montar android")
+    " montar android")
         montar_android
         ;;
 esac

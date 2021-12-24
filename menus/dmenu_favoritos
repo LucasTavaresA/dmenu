@@ -1,39 +1,25 @@
 #!/bin/sh
 
-# config
-search_url="https://www.google.com/search?q="
-open_in_browser="abre_links.sh"
-bookmarks_file="$HOME/suckless/dmenu/menus/listas/favoritos"
+abrir() {
+    notify-send qutebrowser "Abrindo no qutebrowser\n$link"
+    qutebrowser "$link"
+}
 
-select_bookmark() {
-    bookmarks=$(cat "$bookmarks_file")
-    select=$(printf "%s\n" "$bookmarks" \
-        | cut -d ';' -f1 \
-        | dmenu -l 35 -g 4 -h 20 \
-    )
-
-    [ -z "$select" ] \
-        && exit 0
-    
-    open=$(printf "%s" "$bookmarks)" \
-        | grep -F "$select" \
-        | cut -d ';' -f2 \
-    )
-    
-    [ -z "$open" ] \
-        && open=$(printf "%s" "$search_url$select" \
-            | sed 's/ /\%20/g' \
-        )
+seleciona_favorito() {
+    selecionado=$(printf "%s\n" "$favoritos" | cut -d ';' -f1 | dmenu -l 35 -g 4 -h 20)
+    [ -z "$selecionado" ] && exit 0
+    link=$(printf "%s" "$favoritos)" | grep -F "$selecionado" | cut -d ';' -f2)
 }
 
 case "$1" in
     importante)
-        bookmarks_file="$HOME/suckless/dmenu/menus/listas/importante"
-        select_bookmark
-        $open_in_browser "$open"
+        favoritos=$(cat "$HOME/suckless/dmenu/menus/listas/importante")
+        seleciona_favorito
+        abrir "$link"
         ;;
     *)
-        select_bookmark
-        $open_in_browser "$open"
+        favoritos=$(cat "$HOME/suckless/dmenu/menus/listas/favoritos")
+        seleciona_favorito
+        abrir "$link"
         ;;
 esac

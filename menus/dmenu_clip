@@ -37,20 +37,13 @@ list_clips() {
     LC_ALL=C sort -rnk 1 < "$cache_file" | cut -d' ' -f2- | awk '!seen[$0]++'
 }
 
-if [[ "$CM_LAUNCHER" == rofi-script ]]; then
-    if (( $# )); then
-        chosen_line="${!#}"
-    else
-        list_clips
-        exit
-    fi
-else
-    chosen_line=$(list_clips | "$CM_LAUNCHER" "${launcher_args[@]}" "$@")
-    launcher_exit=$?
-fi
+chosen_line=$(list_clips | "$CM_LAUNCHER" "${launcher_args[@]}" "$@")
+launcher_exit=$?
 
 [[ $chosen_line ]] || exit 1
 file=$cache_dir/$(cksum <<< "$chosen_line")
+notify-send Clipmenu -i nothing "Copiado\n$chosen_line"
+xdotool type --window "$window_id" "$chosen_line"
 [[ -f "$file" ]] || exit 2
 
 for selection in clipboard primary; do

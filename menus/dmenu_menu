@@ -2,10 +2,11 @@
 
 data=$(date +'%A %d/%m/%Y - %H:%M')
 
-case "$(printf "ﱮ Ranger\\n Programas\\n Notas\\n Clipboard\\n💀 Kill\\n😂 Emojis\\n Printscreen\\n Maquinas virtuais\\n﫭 Desmontar/montar" | dmenu -l 35 -h 20 -c -cw 100 -p "$data")" in
+case "$(printf "ﱮ Ranger\\n Programas\\n Notas\\n Bash history\\n Clipboard\\n💀 Kill\\n😂 Emojis\\n Printscreen\\n Maquinas virtuais\\n﫭 Desmontar/montar" | dmenu -l 35 -h 20 -c -cw 100 -p "$data")" in
     "ﱮ Ranger") st ranger /home ;;
     " Programas") dmenu_programas ;;
     " Notas") dmenu_notas ;;
+    " Bash history") dmenu_bashhistory ;;
     " Clipboard") dmenu_clip ;;
     "💀 Kill") dmenu_kill ;;
     "😂 Emojis") dmenu_emoji ;;

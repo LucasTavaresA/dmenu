@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Da output em caso de erro
-set -euo pipefail
-
 declare -A pesquisa
 
 # pesquisa[engine]="https://www.google.com/search?q="
