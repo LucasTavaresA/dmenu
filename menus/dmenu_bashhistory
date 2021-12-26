@@ -1,2 +1,0 @@
-#!/bin/sh
-tac < "$HISTFILE" | dmenu -l 35 -h 20 | xclip -selection clipboard

@@ -2,15 +2,17 @@
 
 data=$(date +'%A %d/%m/%Y - %H:%M')
 
-case "$(printf "ﱮ Ranger\\n Programas\\n Notas\\n Bash history\\n Clipboard\\n💀 Kill\\n😂 Emojis\\n Printscreen\\n Maquinas virtuais\\n﫭 Desmontar/montar" | dmenu -l 35 -h 20 -c -cw 100 -p "$data")" in
-    "ﱮ Ranger") st ranger /home ;;
+case "$(printf "ﱮ Ranger\\n Programas\\n Notas\\n Sh history\\n Clipboard\\n韛 Corretor ortográfico\\n💀 Kill\\n Manpages\\n😂 Emojis\\n Printscreen\\n Máquinas virtuais\\n﫭 Desmontar/montar" | dmenu -l 35 -h 20 -c -cw 100 -p "$data")" in
+    "ﱮ Ranger") st ranger ;;
     " Programas") dmenu_programas ;;
     " Notas") dmenu_notas ;;
-    " Bash history") dmenu_bashhistory ;;
+    " Sh history") dmenu_shhistory ;;
     " Clipboard") dmenu_clip ;;
+    "韛 Corretor ortográfico") dmenu_corretor ;;
     "💀 Kill") dmenu_kill ;;
+    " Manpages") dmenu_man ;;
     "😂 Emojis") dmenu_emoji ;;
     " Printscreen") dmenu_print ;;
-    " Maquinas virtuais") dmenu_virtualbox ;;
+    " Máquinas virtuais") dmenu_virtualbox ;;
     "﫭 Desmontar/montar") dmenu_mont ;;
 esac

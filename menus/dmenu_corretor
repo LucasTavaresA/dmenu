@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Faz correção ortográfica e copia palavra selecionado usando dmenu
+
+palavra=$(echo "?" | dmenu )
+
+if [ -n "$palavra" ] && [ "$palavra" != "?" ]; then
+	selecao=$(echo "$palavra" | aspell pipe -l pt_BR --suggest | sed -e '1d; s/^[^:]*://g; s/, /\n/g; s/^ //' | dmenu )
+	[ -z "$selecao" ] && exit
+	if [ "$selecao" = "*" ]; then
+		printf "%s" "$palavra" | xclip -selection clipboard
+		printf "%s" "$palavra" | xclip -selection primary
+	else
+		printf "%s" "$selecao" | xclip -selection clipboard
+		printf "%s" "$selecao" | xclip -selection primary
+	fi
+	pgrep -x dunst >/dev/null && notify-send "$(xclip -o -selection clipboard) copiado."
+    xdotool type --window "$window_id" "$selecao"
+fi
+exit
+
