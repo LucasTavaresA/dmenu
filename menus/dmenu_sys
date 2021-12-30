@@ -1,10 +1,9 @@
 #!/bin/sh
 
 # case "$(printf " Cancelar\\nﰇ Resetar o dwm\\n Sair do dwm\\nﰇ Reiniciar\\n襤 Desligar" | dmenu -l 35 -h 20 -c -cw 100 -p "Opções")" in
-case "$(printf " Cancelar\\nﰇ Resetar o bspwm\\n Sair do bspwm\\nﰇ Reiniciar\\n襤 Desligar" | dmenu -l 35 -h 20 -c -cw 100 -p "Opções")" in
-    " Cancelar") NULL ;;
-#    "ﰇ Resetar o dwm") kill -HUP "$(pgrep -u "$USER" "\bdwm$")" ;;
-#    " Sair do dwm") kill -TERM "$(pgrep -u "$USER" "\bdwm$")" ;;
+case "$(printf " Bloquear\\n Resetar o sxhkd\\nﰇ Resetar o bspwm\\n Sair do bspwm\\nﰇ Reiniciar\\n襤 Desligar" | dmenu -l 35 -h 20 -c -cw 100 -p "Opções")" in
+    " Bloquear") slock ;;
+    " Resetar o sxhkd") pkill -USR1 -x sxhkd ;;
     "ﰇ Resetar o bspwm") bspc wm -r ;;
     " Sair do bspwm") bspc quit ;;
     "ﰇ Reiniciar") systemctl reboot ;;

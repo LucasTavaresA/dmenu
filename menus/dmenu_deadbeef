@@ -8,5 +8,5 @@ case "$(printf "\\n\\n\\n\\n\\n\\n玲\\n\\n怜\\n\\n墳 %s" "$volume" | dm
     "") deadbeef --play-pause ;;
     "怜") deadbeef --next ;;
     "") deadbeef --quit ;;
-    "墳 $volume") st -e pulsemixer ;;
+    "墳 $volume") st -c pulsemixer -e pulsemixer ;;
 esac
