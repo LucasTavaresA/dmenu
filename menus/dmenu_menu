@@ -2,7 +2,7 @@
 
 data=$(date +'%A %d/%m/%Y - %H:%M')
 
-case "$(printf " Programas\\n Copiado\\n❕ Importante\\n Favoritos\\n Notas\\n Histórico\\n韛 Corretor\\n韛 Tradutor\\n Manpages\\n😂 Emojis\\n Print\\n VMs\\n﫭 Des/Montar\\n Wifi" | dmenu -l 5 -g 3 -h 20 -c -cw 500 -p "$data")" in
+case "$(printf " Programas\\n Copiado\\n❕ Importante\\n Favoritos\\n Notas\\n Histórico\\n韛 Corretor\\n韛 Tradutor\\n Manpages\\n😂 Emojis\\n Print\\n VMs\\n﫭 Des/Montar\\n Wifi\\n❔ Teclas" | dmenu -l 5 -g 3 -h 20 -c -cw 500 -p "$data")" in
     " Programas") dmenu_run ;;
     " Copiado") dmenu_clip ;;
     "❕ Importante") dmenu_favoritos importante ;;
@@ -17,4 +17,5 @@ case "$(printf " Programas\\n Copiado\\n❕ Importante\\n Favoritos\\n�
     " VMs") dmenu_virtualbox ;;
     "﫭 Des/Montar") dmenu_mont ;;
     " Wifi") dmenu_wifi ;;
+    "❔ Teclas") sxhkd_atalhos ;;
 esac

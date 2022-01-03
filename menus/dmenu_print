@@ -3,9 +3,9 @@
 screenshot_preview="sxiv $HOME/pic*"
 
 case "$(printf "uma area selecionada\\njanela atual\\ntela cheia (em 3 segundos)\\numa area selecionada (copiar)\\njanela atual (copiar)\\ntela cheia (em 3 segundos) (copiar)" | dmenu -l 35 -h 20 -c -cw 100 -p "Area do print?")" in
-	"uma area selecionada") maim -s pic-selected-"$(date '+%y%m%d-%H%M-%S').png" && $screenshot_preview ;;
-	"janela atual") maim -i "$(xdotool getactivewindow)" pic-window-"$(date '+%y%m%d-%H%M-%S').png" && $screenshot_preview ;;
-    "tela cheia (em 3 segundos)") sleep 3 && maim pic-full-"$(date '+%y%m%d-%H%M-%S').png" && $screenshot_preview ;;
+	"uma area selecionada") maim -s pic-selected-"$(date '+%A %d/%m/%Y - %H:%M').png" && $screenshot_preview ;;
+	"janela atual") maim -i "$(xdotool getactivewindow)" pic-window-"$(date '+%A %d/%m/%Y - %H:%M').png" && $screenshot_preview ;;
+    "tela cheia (em 3 segundos)") sleep 3 && maim pic-full-"$(date '+%A %d/%m/%Y - %H:%M').png" && $screenshot_preview ;;
 	"uma area selecionada (copiar)") maim -s | xclip -selection clipboard -t image/png ;;
 	"janela atual (copiar)") maim -i "$(xdotool getactivewindow)" | xclip -selection clipboard -t image/png ;;
     "tela cheia (em 3 segundos) (copiar)") sleep 3 && maim | xclip -selection clipboard -t image/png ;;
