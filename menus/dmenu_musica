@@ -3,9 +3,10 @@
 tocando=$(mpc current)
 volume=$(amixer -D pulse sget Master | awk -F 'Left:|[][]' 'BEGIN {RS=""}{ print $3 }')
 
-case "$(printf "\\n\\n\\n\\n\\n\\n玲\\n\\n怜\\n墳 %s" "$volume" | dmenu -h 30 -l 1 -g 17 -y 350 -z 1360 -n 7 -p "$tocando")" in
+case "$(printf "\\n\\n\\n\\n\\n\\n玲\\n\\n怜\\n墳 %s" "$volume" | dmenu -h 30 -l 1 -g 17 -y 350 -z 1360 -n 7 -p "$tocando")" in
+    "") mpd --kill ;;
     "玲") mpc prev && notify-send "$tocando" ;;
-    "") mpc toggle ;;
+    "") mpc toggle || mpd ;;
     "怜") mpc next && notify-send "$tocando" ;;
     "墳 $volume") st -c pulsemixer -e pulsemixer ;;
 esac
