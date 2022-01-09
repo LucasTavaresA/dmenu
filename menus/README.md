@@ -2,7 +2,7 @@
 
 ### Scripts
 
-**Todos os scripts foram modificados ao meu gosto**
+**os scripts foram modificados ao meu gosto**
 
 - Varias formas de captura de tela usando dmenu e maim ([dmenu_print](https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/maimpick))
 
@@ -12,20 +12,20 @@
 
 - Seleciona e copia emojis de uma lista usando dmenu ([dmenu_emoji](https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/dmenuunicode))
 
-- Abre comandos com sudo **dmenu_sudo**
-
-- Abre uma lista personalizável de favoritos **dmenu_favoritos e abre_links.sh**
+- Abre uma lista personalizável de favoritos **dmenu_favoritos**
 
 - Menu customizado **dmenu_menu**
-
-- Menu de programas **dmenu_programas**
 
 - Menu opções de energia **dmenu_sys**
 
 - Monta e desmonta drives e isos **dmenu_mont**
 
-- Copia comandos anteriores do bash **dmenu_bashhistory**
-
-- Menus e comandos uteis para um navegador **dmenu_navegador** e **dmenu_pesquisa**
+- Copia comandos anteriores do shell **dmenu_shhistory**
 
 - Abre pasta de documentos e cria ou abre um documento **dmenu_notas**
+
+- Corretor ortográfico **dmenu_corretor**
+
+- Tradutor **dmenu_tradutor**
+
+- Abre maquinas virtuais diretamente **dmenu_virtualbox**
