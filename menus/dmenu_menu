@@ -1,8 +1,9 @@
 #!/bin/sh
 
-data=$(date +'%A %d/%m/%Y - %H:%M')
+data=$(date +'%A %d/%m/%Y %H:%M')
+volume=$(amixer -D pulse sget Master | awk -F 'Left:|[][]' 'BEGIN {RS=""}{ print $3 }')
 
-case "$(printf " Programas\\n Copiado\\n❕ Importante\\n Favoritos\\n Notas\\n Histórico\\n韛 Corretor\\n韛 Tradutor\\n😂 Emojis\\n Print\\n VMs\\n﫭 Des/Montar" | dmenu -l 4 -g 3 -h 20 -c -cw 500 -p "$data")" in
+case "$(printf " Programas\\n Copiado\\n❕ Importante\\n Favoritos\\n Notas\\n Histórico\\n韛 Corretor\\n韛 Tradutor\\n😂 Emojis\\n Print\\n VMs\\n﫭 Des/Montar" | dmenu -l 4 -g 3 -h 20 -c -cw 500 -p "$data - 墳 $volume")" in
     " Programas") dmenu_run ;;
     " Copiado") dmenu_clip ;;
     "❕ Importante") dmenu_favoritos importante ;;

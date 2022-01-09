@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# Escolha e veja a manpage de um programa
-Selecionado="$(man -k . | dmenu -h 20 -l 35 -p "Selecione um programa " | cut -d " " -f1)" && st -e man "$Selecionado"
