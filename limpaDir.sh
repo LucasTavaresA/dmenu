@@ -9,8 +9,8 @@ then
     rm -rf *.o
     rm -rf *.orig
     rm -rf config.h
-    sudo rm -rf dmenu
-    sudo rm -rf stest
+    doas_askpass rm -rf dmenu
+    doas_askpass rm -rf stest
 fi
 
 

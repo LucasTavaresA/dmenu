@@ -4,13 +4,13 @@
 
 **os scripts foram modificados ao meu gosto**
 
-- Varias formas de captura de tela usando dmenu e maim ([dmenu_print](https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/maimpick))
+- Varias formas de captura de tela usando dmenu e maim [dmenu_print](https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/maimpick)
 
-- Clipboard usando dmenu ([dmenu_clip](https://github.com/cdown/clipmenu))
+- Clipboard usando dmenu [dmenu_clip](https://github.com/cdown/clipmenu)
 
-- Fechar processos usando dmenu ([dmenu_kill](https://github.com/MaryHal/dmenu-suite/blob/master/scripts/killmenu))
+- Fechar processos usando dmenu [dmenu_kill](https://github.com/MaryHal/dmenu-suite/blob/master/scripts/killmenu)
 
-- Seleciona e copia emojis de uma lista usando dmenu ([dmenu_emoji](https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/dmenuunicode))
+- Seleciona e copia emojis de uma lista usando dmenu [dmenu_emoji](https://github.com/LukeSmithxyz/voidrice/blob/master/.local/bin/dmenuunicode)
 
 - Abre uma lista personalizável de favoritos **dmenu_favoritos**
 
@@ -29,3 +29,5 @@
 - Tradutor **dmenu_tradutor**
 
 - Abre maquinas virtuais diretamente **dmenu_virtualbox**
+
+- Frontend para senhas **dmenu_pass**

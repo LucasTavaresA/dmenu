@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# auth can be something like sudo -A, doas -- or nothing,
-# depending on configuration requirements
-auth="sudo -A"
+# Autenticação utilizada
+# Exemplo: sudo -A ou doas --
+auth="doas_askpass"
 
 #config
 mount_dir="/tmp"

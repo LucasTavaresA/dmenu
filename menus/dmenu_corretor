@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# Faz correção ortográfica e copia palavra selecionado usando dmenu
-
 palavra=$(echo "?" | dmenu)
 
 if [ -n "$palavra" ] && [ "$palavra" != "?" ]; then
