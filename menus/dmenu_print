@@ -2,7 +2,7 @@
 
 screenshot_preview="sxiv $HOME/screenshot.png"
 
-case "$(printf "uma area selecionada\\njanela atual\\ntela cheia (em 3 segundos)\\numa area selecionada (copiar)\\njanela atual (copiar)\\ntela cheia (em 3 segundos) (copiar)" | dmenu -l 35 -h 20 -c -cw 100 -p "Area do print?")" in
+case "$(printf "uma area selecionada\\njanela atual\\ntela cheia (em 3 segundos)\\numa area selecionada (copiar)\\njanela atual (copiar)\\ntela cheia (em 3 segundos) (copiar)" | dmenu -l 33 -h 20 -c -cw 100 -p "Area do print?")" in
 	"uma area selecionada") maim -s screenshot.png && $screenshot_preview ;;
     "janela atual") maim -i "$(xdotool getactivewindow)" screenshot.png && $screenshot_preview ;;
     "tela cheia (em 3 segundos)") sleep 3 && maim screenshot.png && $screenshot_preview ;;

@@ -1,6 +1,7 @@
 #!/bin/sh
 
-texto=$(echo "?" | dmenu)
+texto=$(echo "" | dmenu -c)
+[ -z "$texto" ] && exit 0 # Sai caso não haja nada para traduzir
 linhas=$(echo "$texto" | wc -c)
 if [ "$linhas" -gt 30 ] ; then
     traducao=$(echo "$texto" | trans -b > "$HOME/.cache/translation")

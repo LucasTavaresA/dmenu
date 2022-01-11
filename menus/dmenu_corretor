@@ -1,9 +1,9 @@
 #!/bin/sh
-lingua=$(printf "pt_BR\\nen_US" | dmenu)
-palavra=$(echo "?" | dmenu)
+lingua=$(printf "pt_BR\\nen_US" | dmenu -c)
+palavra=$(echo "?" | dmenu -c)
 
 if [ -n "$palavra" ] && [ "$palavra" != "?" ]; then
-	selecao=$(echo "$palavra" | aspell pipe -l "$lingua" --suggest | sed -e '1d; s/^[^:]*://g; s/, /\n/g; s/^ //' | dmenu )
+	selecao=$(echo "$palavra" | aspell pipe -l "$lingua" --suggest | sed -e '1d; s/^[^:]*://g; s/, /\n/g; s/^ //' | dmenu -l 33 -h 20)
 	[ -z "$selecao" ] && exit
 	if [ "$selecao" = "*" ]; then
 		printf "%s" "$palavra" | xclip -selection clipboard

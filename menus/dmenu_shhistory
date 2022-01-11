@@ -1,6 +1,6 @@
 #!/bin/sh
-selecao=$(tac < "$HISTFILE" | cut -d ';' -f2 | dmenu -l 35 -h 20)
-[ -n "$selecao" ] || exit 
+selecao=$(tac < "$HISTFILE" | cut -d ';' -f2 | dmenu -l 33 -h 20)
+[ -n "$selecao" ] || exit
 printf "%s" "$selecao" | xclip -selection clipboard && \
                         notify-send Copiado "$selecao" && \
                         xdotool type --window "$window_id" "$selecao"
