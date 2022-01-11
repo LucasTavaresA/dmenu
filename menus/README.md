@@ -31,3 +31,5 @@
 - Abre maquinas virtuais diretamente **dmenu_virtualbox**
 
 - Frontend para senhas **dmenu_pass**
+
+- Abre uma lista de arquivos para editar no vim **dmenu_edit**

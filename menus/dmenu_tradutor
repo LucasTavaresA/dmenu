@@ -6,5 +6,7 @@ if [ "$linhas" -gt 30 ] ; then
     traducao=$(echo "$texto" | trans -b > "$HOME/.cache/translation")
     st -e less $HOME/.cache/translation
 else
-    traducao=$(echo "$texto" | trans -b) && notify-send Tradução "$traducao"
+    traducao=$(echo "$texto" | trans -b) && notify-send Tradução "$traducao" && \
+    echo "$traducao" | xclip -selection clipboard && \
+    xdotool type --window "$window_id" "$traducao"
 fi

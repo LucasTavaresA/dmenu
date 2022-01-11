@@ -26,11 +26,11 @@
 
 - Centraliza janelas quando especificado ([center](https://tools.suckless.org/dmenu/patches/center/))
 
-- Transparencia ([alpha](https://tools.suckless.org/dmenu/patches/alpha/))
+- Transparência ([alpha](https://tools.suckless.org/dmenu/patches/alpha/))
 
 - Altura das linhas controlável ([line height](https://tools.suckless.org/dmenu/patches/line-height/))
 
-- Posição controlavel ([xyw](https://tools.suckless.org/dmenu/patches/xyw/))
+- Posição controlável ([xyw](https://tools.suckless.org/dmenu/patches/xyw/))
 
 - Linhas aparecem abaixo do prompt ([lines below prompt](https://tools.suckless.org/dmenu/patches/lines-below-prompt/))
 

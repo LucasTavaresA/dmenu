@@ -1,25 +1,16 @@
 #!/bin/sh
-
-abrir() {
-    notify-send qutebrowser "Abrindo no qutebrowser\n$link"
-    qutebrowser "$link"
-}
-
-seleciona_favorito() {
-    selecionado=$(printf "%s\n" "$favoritos" | cut -d ';' -f1 | dmenu -l 35 -g 4 -h 20)
-    [ -z "$selecionado" ] && exit 0
-    link=$(printf "%s" "$favoritos)" | grep -F "$selecionado" | cut -d ';' -f2)
-}
+browser="qutebrowser"
 
 case "$1" in
     importante)
-        favoritos=$(cat "$HOME/suckless/dmenu/menus/listas/importante")
-        seleciona_favorito
-        abrir "$link"
+        favoritos="$HOME/suckless/dmenu/menus/listas/importante"
         ;;
     *)
-        favoritos=$(cat "$HOME/suckless/dmenu/menus/listas/favoritos")
-        seleciona_favorito
-        abrir "$link"
+        favoritos="$HOME/suckless/dmenu/menus/listas/favoritos"
         ;;
 esac
+
+selecionado=$(cut -d';' -f1 "$favoritos" | dmenu -l 33 -h 20 -g 4)
+[ -z "$selecionado" ] && exit 0 # Sai caso nada seja selecionado
+link=$(grep "$selecionado" "$favoritos" | cut -d';' -f2)
+$browser "$link" && notify-send "Abrindo no $browser" "$link"

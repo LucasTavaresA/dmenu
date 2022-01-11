@@ -1,0 +1,7 @@
+#!/bin/sh
+
+lista="/home/lucas/suckless/dmenu/menus/listas/editar"
+selecionado=$(cut -d';' -f1 "$lista" | dmenu -l 33 -h 20 -c -cw 100)
+[ -z "$selecionado" ] && exit 0 # Sai caso nada seja selecionado
+arquivo=$(grep -m 1 "$selecionado" "$lista" | cut -d';' -f2)
+st -e nvim "$arquivo"
