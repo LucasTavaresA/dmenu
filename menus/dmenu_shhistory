@@ -1,5 +1,5 @@
 #!/bin/sh
-selecao=$(tac < "$HISTFILE" | cut -d ';' -f2 | dmenu -l 33 -h 20)
+selecao=$(tac < "$HISTFILE" | cut -d ';' -f2 | dmenu -l 31 -h 20)
 [ -n "$selecao" ] || exit
 printf "%s" "$selecao" | xclip -selection clipboard && \
                         notify-send Copiado "$selecao" && \
