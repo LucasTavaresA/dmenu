@@ -1,9 +1,5 @@
 # Minha build do dmenu
 
-**Pasta menus contem scripts e menus custom**
-
-**Lembre-se de mudar as flags caso for usar os scripts em uma outra configuração do dmenu**
-
 ![screenshot](./screenshot.png)
 
 ## Patches
