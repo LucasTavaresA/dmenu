@@ -1,5 +1,7 @@
 # Minha build do dmenu
 
+[Scripts do dmenu](https://github.com/LucasTavaresA/dmenuscripts)
+
 ![screenshot](./screenshot.png)
 
 ## Patches
