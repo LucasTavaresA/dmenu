@@ -617,6 +617,9 @@ insert:
 	case XK_Escape:
 		cleanup();
 		exit(1);
+	case XK_Menu:
+		cleanup();
+		exit(1);
 	case XK_Home:
 	case XK_KP_Home:
 		if (sel == matches) {
