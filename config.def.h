@@ -4,7 +4,7 @@
 static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
 static int centered = 0;                    /* -c option; centers dmenu on screen */
 static int dmw = 1277;  /* width when not especified */
-static const unsigned int alpha = 0xb3;
+static const unsigned int alpha = 0xe6;
 static int fuzzy = 1;              /* -F  option; if 0, dmenu doesn't use fuzzy matching     */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
@@ -15,11 +15,11 @@ static const char *fonts[] = {
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
 	/*                        fg         bg       */
-	[SchemeNorm] = {          "#FFFFFF", "#2f334d" },
+	[SchemeNorm] = {          "#ffffff", "#2f334d" },
 	[SchemeSel] = {           "#2f334d", "#ffffff" },
     [SchemeBorder] = {        "#ffffff", "#ffffff" },
-    [SchemeSelHighlight] = {  "#FF0000", "#000000" },
-	[SchemeNormHighlight] = { "#FF0000", "#000000" },
+    [SchemeSelHighlight] = {  "#000000", "#ffff00" },
+	[SchemeNormHighlight] = { "#000000", "#ffff00" },
 	[SchemeOut] = {           "#ffff00", "#ffff00" },
 };
 
