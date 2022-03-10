@@ -33,3 +33,5 @@
 - Linhas aparecem abaixo do prompt ([[https://tools.suckless.org/dmenu/patches/lines-below-prompt/][lines below prompt]])
 
 - Presseleção de itens ([[https://tools.suckless.org/dmenu/patches/preselect/][preselect]])
+
+- Seleciona caso exista apenas um item ([[https://tools.suckless.org/dmenu/patches/instant/][instant]])

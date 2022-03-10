@@ -11,4 +11,6 @@ then
     rm -rf config.h
     rm -rf dmenu
     rm -rf stest
+    rm -rf *.rej
+    rm -rf *.orig
 fi
