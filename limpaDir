@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo -n "deletar arquivos inúteis [y/n]? "
+read answer
+if [ "$answer" != "${answer#[Yy]}" ] ;then
+    echo deletados arquivos inuteis
+    rm -rf *.o
+    rm -rf *.rej
+    rm -rf *.orig
+    rm -rf config.h
+    rm -rf dmenu
+    rm -rf stest
+    rm -rf *.rej
+fi
