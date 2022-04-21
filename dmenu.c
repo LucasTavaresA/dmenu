@@ -75,6 +75,13 @@ static int (*fstrncmp)(const char *, const char *, size_t) = strncasecmp;
 static char *(*fstrstr)(const char *, const char *) = cistrstr;
 static void xinitvisual();
 
+static unsigned int
+textw_clamp(const char *str, unsigned int n)
+{
+    unsigned int w = drw_fontset_getwidth_clamp(drw, str, n) + lrpad;
+    return MIN(w, n);
+}
+
 static void
 appenditem(struct item *item, struct item **list, struct item **last)
 {
@@ -99,10 +106,10 @@ calcoffsets(void)
 		n = mw - (promptw + inputw + TEXTW("<") + TEXTW(">"));
 	/* calculate which items will begin the next page and previous page */
 	for (i = 0, next = curr; next; next = next->right)
-		if ((i += (lines > 0) ? bh : MIN(TEXTW(next->text), n)) > n)
+		if ((i += (lines > 0) ? bh : textw_clamp(next->text, n)) > n)
 			break;
 	for (i = 0, prev = curr; prev && prev->left; prev = prev->left)
-		if ((i += (lines > 0) ? bh : MIN(TEXTW(prev->left->text), n)) > n)
+		if ((i += (lines > 0) ? bh : textw_clamp(prev->left->text, n)) > n)
 			break;
 }
 
@@ -123,19 +130,29 @@ cleanup(void)
 	XUngrabKey(dpy, AnyKey, AnyModifier, root);
 	for (i = 0; i < SchemeLast; i++)
 		free(scheme[i]);
+    for (i = 0; items && items[i].text; ++i)
+        free(items[i].text);
+    free(items);
 	drw_free(drw);
 	XSync(dpy, False);
 	XCloseDisplay(dpy);
 }
 
 static char *
-cistrstr(const char *s, const char *sub)
+cistrstr(const char *h, const char *n)
 {
-	size_t len;
+    size_t i;
 
-	for (len = strlen(sub); *s; s++)
-		if (!strncasecmp(s, sub, len))
-			return (char *)s;
+    if (!n[0])
+        return (char *)h;
+
+    for (; *h; ++h) {
+        for (i = 0; n[i] && tolower((unsigned char)n[i]) ==
+                    tolower((unsigned char)h[i]); ++i)
+            ;
+        if (n[i] == '\0')
+            return (char *)h;
+    }
 	return NULL;
 }
 
@@ -261,7 +278,7 @@ drawmenu(void)
 		}
 		x += w;
 		for (item = curr; item != next; item = item->right)
-	        x = drawitem(item, x, 0, MIN(TEXTW(item->text), mw - x - TEXTW(">") - TEXTW(numbers)));
+	        x = drawitem(item, x, 0, textw_clamp(item->text, mw - x - TEXTW(">") - TEXTW(numbers)));
         if (next) {
 			w = TEXTW(">");
 			drw_setscheme(drw, scheme[SchemeNorm]);
@@ -371,7 +388,7 @@ fuzzymatch(void)
 	if (number_of_matches) {
 		/* initialize array with matches */
 		if (!(fuzzymatches = realloc(fuzzymatches, number_of_matches * sizeof(struct item*))))
-			die("cannot realloc %u bytes:", number_of_matches * sizeof(struct item*));
+			die("cannot realloc %zu bytes:", number_of_matches * sizeof(struct item*));
 		for (i = 0, it = matches; it && i < number_of_matches; i++, it = it->right) {
 			fuzzymatches[i] = it;
 		}
@@ -597,7 +614,7 @@ keypress(XKeyEvent *ev)
 	switch(ksym) {
 	default:
 insert:
-		if (!iscntrl(*buf))
+        if (!iscntrl((unsigned char)*buf))
 			insert(buf, len);
 		break;
 	case XK_Delete:
@@ -777,8 +794,7 @@ static void
 readstdin(void)
 {
 	char buf[sizeof text], *p;
-	size_t i, imax = 0, size = 0;
-	unsigned int tmpmax = 0;
+    size_t i, size = 0;
 	if(passwd){
     	inputw = lines = 0;
     	return;
@@ -789,21 +805,15 @@ readstdin(void)
 	for (i = 0; fgets(buf, sizeof buf, stdin); i++) {
 		if (i + 1 >= size / sizeof *items)
 			if (!(items = realloc(items, (size += BUFSIZ))))
-				die("cannot realloc %u bytes:", size);
+				die("cannot realloc %zu bytes:", size);
 		if ((p = strchr(buf, '\n')))
 			*p = '\0';
 		if (!(items[i].text = strdup(buf)))
-			die("cannot strdup %u bytes:", strlen(buf) + 1);
+			die("cannot strdup %zu bytes:", strlen(buf) + 1);
 		items[i].out = 0;
-		drw_font_getexts(drw->fonts, buf, strlen(buf), &tmpmax, NULL);
-		if (tmpmax > inputw) {
-			inputw = tmpmax;
-			imax = i;
-		}
 	}
 	if (items)
 		items[i].text = NULL;
-	inputw = items ? TEXTW(items[imax].text) : 0;
 	lines = MIN(lines, i);
 }
 
@@ -860,12 +870,13 @@ static void
 setup(void)
 {
 	int x, y, i, j;
-	unsigned int du;
+	unsigned int du, tmp;
 	XSetWindowAttributes swa;
 	XIM xim;
 	Window w, dw, *dws;
 	XWindowAttributes wa;
 	XClassHint ch = {"dmenu", "dmenu"};
+    struct item *item;
 #ifdef XINERAMA
 	XineramaScreenInfo *info;
 	Window pw;
@@ -907,7 +918,7 @@ setup(void)
 		/* no focused window is on screen, so use pointer location instead */
 		if (mon < 0 && !area && XQueryPointer(dpy, root, &dw, &dw, &x, &y, &di, &di, &du))
 			for (i = 0; i < n; i++)
-				if (INTERSECT(x, y, 1, 1, info[i]))
+				if (INTERSECT(x, y, 1, 1, info[i]) != 0)
 					break;
         if (centered) {
 			mw = MIN(MAX(max_textw() + promptw, dmw), info[i].width);
@@ -937,7 +948,12 @@ setup(void)
 			mw = (dmw>0 ? dmw : wa.width);
 		}
 	}
-	inputw = MIN(inputw, mw/3);
+    for (item = items; item && item->text; ++item) {
+        if ((tmp = textw_clamp(item->text, mw/3)) > inputw) {
+            if ((inputw = tmp) == mw/3)
+                break;
+        }
+    }
 	match();
 
 	/* create menu window */
